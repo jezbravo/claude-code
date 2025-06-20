@@ -1,25 +1,32 @@
 # claudecode
 
-A Python package managed with Poetry.
+A Python project with FastAPI and PostgreSQL.
 
-## Installation
+## Setup
 
+### With Docker
 ```bash
-poetry install
+docker-compose up --build
 ```
 
-## Development
+### Local Development
+```bash
+poetry install
+poetry run uvicorn claudecode.main:app --reload
+```
 
-This project uses Poetry for dependency management. See the main package code in the `claudecode/` directory.
+## Database
 
-### Commands
+PostgreSQL with Alembic migrations.
 
-- `poetry install` - Install dependencies
-- `poetry build` - Build the package
-- `poetry run pytest` - Run tests
+```bash
+poetry run alembic revision -m "description" --autogenerate
+poetry run alembic upgrade head
+```
 
 ## Project Structure
 
 - `claudecode/` - Main package directory
+- `alembic/` - Database migrations
 - `tests/` - Test directory
 - `pyproject.toml` - Poetry configuration
