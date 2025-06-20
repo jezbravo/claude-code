@@ -11,7 +11,7 @@ class App(Base):
     name: Mapped[str] = mapped_column(String, nullable=False)
     description: Mapped[str] = mapped_column(String, nullable=False)
     db_name: Mapped[str] = mapped_column(String, nullable=False)
-    enviroment: Mapped[str] = mapped_column(String, nullable=False)
+    environment: Mapped[str] = mapped_column(String, nullable=False)
     wallet_id: Mapped[int] = mapped_column(Integer, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=func.now, nullable=False)
     updated_at: Mapped[datetime] = mapped_column(

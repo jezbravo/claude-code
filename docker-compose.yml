@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql+asyncpg://claudecode:claudecode123@postgres:5432/claudecode
+      - DATABASE_URL=${DATABASE_URL:-postgresql+asyncpg://claudecode:claudecode123@postgres:5432/claudecode}
     depends_on:
       postgres:
         condition: service_healthy
@@ -17,9 +17,9 @@ services:
     image: postgres:15
     container_name: claudecode_postgres
     environment:
-      POSTGRES_DB: claudecode
-      POSTGRES_USER: claudecode
-      POSTGRES_PASSWORD: claudecode123
+      POSTGRES_DB: ${POSTGRES_DB:-claudecode}
+      POSTGRES_USER: ${POSTGRES_USER:-claudecode}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-claudecode123}
     ports:
       - "5432:5432"
     volumes:

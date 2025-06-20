@@ -7,7 +7,7 @@ class AppBase(BaseModel):
     name: str
     description: str
     db_name: str
-    enviroment: str
+    environment: str
     wallet_id: int
 
 
@@ -19,7 +19,7 @@ class AppUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     db_name: Optional[str] = None
-    enviroment: Optional[str] = None
+    environment: Optional[str] = None
     wallet_id: Optional[int] = None
 
 
