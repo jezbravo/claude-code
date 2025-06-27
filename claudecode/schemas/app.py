@@ -9,6 +9,7 @@ class AppBase(BaseModel):
     db_name: str
     environment: str
     wallet_id: int
+    status: str = "active"
 
 
 class AppCreate(AppBase):
@@ -21,6 +22,7 @@ class AppUpdate(BaseModel):
     db_name: Optional[str] = None
     environment: Optional[str] = None
     wallet_id: Optional[int] = None
+    status: Optional[str] = None
 
 
 class AppResponse(AppBase):

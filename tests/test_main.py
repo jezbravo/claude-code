@@ -29,7 +29,8 @@ async def test_create_app(client: AsyncClient):
         "description": "A test application",
         "db_name": "test_db",
         "environment": "test",
-        "wallet_id": 123
+        "wallet_id": 123,
+        "status": "active"
     }
     
     response = await client.post("/apps/", json=app_data)
@@ -51,7 +52,8 @@ async def test_read_apps(client: AsyncClient):
         "description": "Another test application",
         "db_name": "test_db_2",
         "environment": "test",
-        "wallet_id": 456
+        "wallet_id": 456,
+        "status": "active"
     }
     await client.post("/apps/", json=app_data)
     
