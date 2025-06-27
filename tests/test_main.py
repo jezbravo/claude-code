@@ -3,9 +3,10 @@ from httpx import AsyncClient
 
 
 @pytest.mark.asyncio
-async def test_root_endpoint(client: AsyncClient):
+async def test_root_endpoint(client):
     """Test the root endpoint."""
-    response = await client.get("/")
+    http_client = await client.__anext__()
+    response = await http_client.get("/")
     assert response.status_code == 200
     data = response.json()
     assert data["message"] == "Hello World"
@@ -13,17 +14,19 @@ async def test_root_endpoint(client: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_health_check(client: AsyncClient):
+async def test_health_check(client):
     """Test the health check endpoint."""
-    response = await client.get("/health")
+    http_client = await client.__anext__()
+    response = await http_client.get("/health")
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
 
 
 @pytest.mark.asyncio
-async def test_create_app(client: AsyncClient):
+async def test_create_app(client):
     """Test creating a new app."""
+    http_client = await client.__anext__()
     app_data = {
         "name": "Test App",
         "description": "A test application",
@@ -33,7 +36,7 @@ async def test_create_app(client: AsyncClient):
         "status": "active"
     }
     
-    response = await client.post("/apps/", json=app_data)
+    response = await http_client.post("/apps/", json=app_data)
     assert response.status_code == 200
     data = response.json()
     assert data["name"] == app_data["name"]
@@ -44,8 +47,9 @@ async def test_create_app(client: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_read_apps(client: AsyncClient):
+async def test_read_apps(client):
     """Test reading all apps."""
+    http_client = await client.__anext__()
     # First create an app
     app_data = {
         "name": "Test App 2",
@@ -55,10 +59,10 @@ async def test_read_apps(client: AsyncClient):
         "wallet_id": 456,
         "status": "active"
     }
-    await client.post("/apps/", json=app_data)
+    await http_client.post("/apps/", json=app_data)
     
     # Then read all apps
-    response = await client.get("/apps/")
+    response = await http_client.get("/apps/")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
@@ -66,9 +70,10 @@ async def test_read_apps(client: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_read_app_not_found(client: AsyncClient):
+async def test_read_app_not_found(client):
     """Test reading a non-existent app."""
-    response = await client.get("/apps/999")
+    http_client = await client.__anext__()
+    response = await http_client.get("/apps/999")
     assert response.status_code == 404
     data = response.json()
     assert data["detail"] == "App not found"
