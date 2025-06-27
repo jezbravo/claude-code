@@ -5,7 +5,6 @@ from claudecode.models.app import App
 
 @pytest.mark.asyncio
 async def test_app_model_with_status_field(db_session):
-    session = await db_session.__anext__()
     """Test that App model includes status field for tracking application state."""
     # Test data
     app_data = {
@@ -19,9 +18,9 @@ async def test_app_model_with_status_field(db_session):
     
     # Create app instance
     app = App(**app_data)
-    session.add(app)
-    await session.commit()
-    await session.refresh(app)
+    db_session.add(app)
+    await db_session.commit()
+    await db_session.refresh(app)
     
     # Assertions
     assert app.id is not None
@@ -37,7 +36,6 @@ async def test_app_model_with_status_field(db_session):
 
 @pytest.mark.asyncio
 async def test_app_status_field_accepts_various_states(db_session):
-    session = await db_session.__anext__()
     """Test that status field accepts different application states."""
     statuses = ["active", "inactive", "pending", "archived"]
     
@@ -50,16 +48,15 @@ async def test_app_status_field_accepts_various_states(db_session):
             wallet_id=1,
             status=status
         )
-        session.add(app)
-        await session.commit()
-        await session.refresh(app)
+        db_session.add(app)
+        await db_session.commit()
+        await db_session.refresh(app)
         
         assert app.status == status
 
 
 @pytest.mark.asyncio
 async def test_app_status_field_required(db_session):
-    session = await db_session.__anext__()
     """Test that status field is required when not nullable."""
     # This test will be updated once we determine if status should be nullable
     app = App(
@@ -73,13 +70,13 @@ async def test_app_status_field_required(db_session):
     
     # If status has a default, this should work
     # If status is required, this should raise an error
-    session.add(app)
+    db_session.add(app)
     try:
-        await session.commit()
-        await session.refresh(app)
+        await db_session.commit()
+        await db_session.refresh(app)
         # If we get here, status either has a default or is nullable
         assert hasattr(app, 'status')
     except Exception:
         # If we get an exception, status is required and not nullable
-        await session.rollback()
+        await db_session.rollback()
         pytest.skip("Status field is required - expected behavior")
