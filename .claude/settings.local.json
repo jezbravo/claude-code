@@ -4,11 +4,16 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
+      "Bash(git switch:*)",
+      "Bash(git checkout:*)",
+
       "Bash(gh issue create:*)",
       "Bash(gh label:*)",
       "Bash(gh project:*)",
       "Bash(gh issue view:*)",
-      "Bash(git checkout:*)"
+
+      "Bash(poetry run alembic:*)",
+      "Bash(poetry run pytest:*)"
     ],
     "deny": ["Bash(curl:*)"]
   }
