@@ -42,7 +42,7 @@ async def db_session(test_engine):
 async def client(test_engine):
     """Create test client with database dependency override."""
     async_session = sessionmaker(test_engine, class_=AsyncSession, expire_on_commit=False)
-    
+
     async def override_get_db():
         async with async_session() as session:
             yield session
