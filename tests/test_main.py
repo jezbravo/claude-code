@@ -3,7 +3,7 @@ from httpx import AsyncClient
 
 
 @pytest.mark.asyncio
-async def test_root_endpoint(client: AsyncClient):
+async def test_root_endpoint(client):
     """Test the root endpoint."""
     response = await client.get("/")
     assert response.status_code == 200
@@ -13,7 +13,7 @@ async def test_root_endpoint(client: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_health_check(client: AsyncClient):
+async def test_health_check(client):
     """Test the health check endpoint."""
     response = await client.get("/health")
     assert response.status_code == 200
@@ -22,14 +22,15 @@ async def test_health_check(client: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_create_app(client: AsyncClient):
+async def test_create_app(client):
     """Test creating a new app."""
     app_data = {
         "name": "Test App",
         "description": "A test application",
         "db_name": "test_db",
         "environment": "test",
-        "wallet_id": 123
+        "wallet_id": 123,
+        "status": "active"
     }
     
     response = await client.post("/apps/", json=app_data)
@@ -43,7 +44,7 @@ async def test_create_app(client: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_read_apps(client: AsyncClient):
+async def test_read_apps(client):
     """Test reading all apps."""
     # First create an app
     app_data = {
@@ -51,7 +52,8 @@ async def test_read_apps(client: AsyncClient):
         "description": "Another test application",
         "db_name": "test_db_2",
         "environment": "test",
-        "wallet_id": 456
+        "wallet_id": 456,
+        "status": "active"
     }
     await client.post("/apps/", json=app_data)
     
@@ -64,7 +66,7 @@ async def test_read_apps(client: AsyncClient):
 
 
 @pytest.mark.asyncio
-async def test_read_app_not_found(client: AsyncClient):
+async def test_read_app_not_found(client):
     """Test reading a non-existent app."""
     response = await client.get("/apps/999")
     assert response.status_code == 404
