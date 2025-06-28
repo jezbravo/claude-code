@@ -2,6 +2,13 @@
 
 A Python project with FastAPI and PostgreSQL.
 
+## Requirements
+
+- [Poetry](https://python-poetry.org/) - Dependency management and packaging
+- [pytest](https://pytest.org/) - Testing framework
+- [Alembic](https://alembic.sqlalchemy.org/) - Database migration tool
+- [GitHub CLI](https://cli.github.com/) - Command-line tool for GitHub
+
 ## Setup
 
 ### With Docker
