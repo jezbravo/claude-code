@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git switch:*)",
+      "Bash(git checkout:*)",
+      "Bash(gh issue create:*)",
+      "Bash(gh label:*)",
+      "Bash(gh project:*)",
+      "Bash(gh issue view:*)",
+      "Bash(poetry run alembic:*)",
+      "Bash(poetry run pytest:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(pg_isready:*)",
+      "Bash(docker exec:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh api:*)"
+    ],
+    "deny": ["Bash(curl:*)"]
+  }
+}
