@@ -16,8 +16,6 @@ Python/FastAPI
 - Use def for pure functions and async def for asynchronous operations.
 - Use type hints for all function signatures. Prefer Pydantic models over raw dictionaries for input validation.
 - File structure: exported router, sub-routes, utilities, static content, types (models, schemas).
-- Avoid unnecessary curly braces in conditional statements.
-- For single-line statements in conditionals, omit curly braces.
 - Use concise, one-line syntax for simple conditional statements (e.g., if condition: do_something()).
 
 Error Handling and Validation

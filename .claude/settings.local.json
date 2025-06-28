@@ -2,8 +2,6 @@
   "permissions": {
     "allow": [
       "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
       "Bash(git switch:*)",
       "Bash(git checkout:*)",
       "Bash(gh issue create:*)",
@@ -14,10 +12,10 @@
       "Bash(poetry run pytest:*)",
       "Bash(docker-compose up:*)",
       "Bash(pg_isready:*)",
-      "Bash(docker exec:*)"
+      "Bash(docker exec:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh api:*)"
     ],
-    "deny": [
-      "Bash(curl:*)"
-    ]
+    "deny": ["Bash(curl:*)"]
   }
 }
