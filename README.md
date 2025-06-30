@@ -24,6 +24,24 @@ poetry run alembic revision -m "description" --autogenerate
 poetry run alembic upgrade head
 ```
 
+## Testing
+
+Run tests using pytest:
+
+```bash
+# Run all tests
+poetry run pytest
+
+# Run tests with verbose output
+poetry run pytest -v
+
+# Run tests in a specific directory
+poetry run pytest tests/
+
+# Run tests with coverage
+poetry run pytest --cov=claudecode
+```
+
 ## Custom Commands
 
 This project includes custom Claude Code commands for issue management:
