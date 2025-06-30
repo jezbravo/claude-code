@@ -5,6 +5,22 @@ from .base import Base
 
 
 class App(Base):
+    """SQLAlchemy model representing an application.
+    
+    Stores application metadata including name, description, database configuration,
+    environment details, and associated wallet information.
+    
+    Attributes:
+        id: Primary key for the application
+        name: Application name
+        description: Application description
+        db_name: Database name for the application
+        environment: Deployment environment (dev, staging, prod)
+        wallet_id: Associated wallet identifier
+        status: Application status (active, inactive)
+        created_at: Timestamp when the application was created
+        updated_at: Timestamp when the application was last updated
+    """
     __tablename__ = "apps"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
