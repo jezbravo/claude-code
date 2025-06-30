@@ -14,8 +14,11 @@
       "Bash(pg_isready:*)",
       "Bash(docker exec:*)",
       "Bash(gh pr:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(gh issue edit:*)"
     ],
-    "deny": ["Bash(curl:*)"]
+    "deny": [
+      "Bash(curl:*)"
+    ]
   }
 }
