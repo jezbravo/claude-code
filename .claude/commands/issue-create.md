@@ -30,3 +30,6 @@ Assign to bob, label as bug and backend, milestone "v1.1", project "Stability Ro
 
 Expected output:
 gh issue create --title "Bug: 500 error on login page" --body "Problem: Submitting valid credentials on the login page returns a 500 error. Where: /login endpoint in Chrome 125 (Windows & macOS). Expected: Successful redirect to the dashboard. Actual: Browser shows 500 Internal Server Error. Additional context: server logs attached in comment." --label bug, backend, Ready --assignee bob --milestone "v1.1" --project "Stability Roadmap"
+
+You must execute the gh code (Bash(gh issue create:*))
+Your final response should be something like: "Issue created: https://github.com/jezbravo/claude-code/issues/32"
