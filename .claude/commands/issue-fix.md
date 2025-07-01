@@ -12,12 +12,13 @@ Phases:
    • Summarize the problem, history, code‑standards context.
 
 2. Implement
-   • gh issue edit $ARGUMENTS --add-label "In progress"
+   • gh issue edit $ARGUMENTS --remove-label "Ready" --add-label "In progress"
    • If branch issue/$ARGUMENTS exists: git switch issue/$ARGUMENTS
     Else: git worktree add issue/$ARGUMENTS
    • gh issue edit $ARGUMENTS --body "Working on this in branch: issue/$ARGUMENTS"
-   • Write/update tests first (TDD).
-   • Make minimal code changes.
+   • Ultrathink and write/update tests first (TDD).
+   • Ultrathink and break down the issue into small, manageable tasks.
+   • Ultrathink and make the necesary code changes.
    • Commit with one‑line message.
 
 3. Deliver
