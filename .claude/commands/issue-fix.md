@@ -14,8 +14,9 @@ Phases:
 2. Implement  
    • If branch issue/$ARGUMENTS exists: git switch issue/$ARGUMENTS  
     Else: git checkout -b issue/$ARGUMENTS  
-   • Write/update tests first (TDD).  
-   • Make minimal code changes.  
+   • Ultrathink and write/update tests first (TDD).
+   • Utrathink and break down the issue into small, manageable tasks.
+   • Make the required code changes.
    • Commit with one‑line message.
 
 3. Deliver  
